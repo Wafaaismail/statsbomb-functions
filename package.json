@@ -1,0 +1,27 @@
+{
+  "name": "javascript-task",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "benchmark": "NODE_OPTIONS=--experimental-vm-modules node benchmark.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "benny": "^3.6.15",
+    "jest": "^27.0.6"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {}
+  },
+  "dependencies": {
+    "ramda": "^0.27.1"
+  }
+}
