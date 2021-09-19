@@ -14,7 +14,6 @@ const findIndex = (list, sortKey) => value => {
 
 const insert = (list, sortKey, item) => {
   // SHOULD OPTIMIZE
-  // console.log(`item`, list)
   return [...list, item];
 }
 
@@ -42,6 +41,3 @@ export const List = ({ sortKey, initial, initialOrder}) => {
     })
   }
 }
-List({ initial: [4, 8, 3, 2], initialOrder: false  }).insert(7).items
-// console.log(List({ initial: [1, 2, 3, 4], initialOrder: true  }).findIndex(3))
-// List({ initial: [4, 3, -1, 1, 2, 5, 0] }).items

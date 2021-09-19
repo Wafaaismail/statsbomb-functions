@@ -1,10 +1,9 @@
 import { pipe, always, applySpec, map, F } from "ramda";
 import TimSort from "timsort";
 const getValue = (o, sortKey) => (sortKey ? o[sortKey] : o);
-
 const sort = (list, sortKey) => {
   // var arr = [...list];
-  TimSort.sort(list, (a,b)=>getValue(a,sortKey)-getValue(b,sortKey));
+  TimSort.sort(list, (a, b) => getValue(a, sortKey) - getValue(b, sortKey));
   return list;
 };
 
@@ -25,25 +24,35 @@ const findIndex = (list, sortKey) => (value) => {
   return -1;
 };
 
+// const value = getValue(item, sortKey);
+// const len = list.length;
+// let i = 0;
+//   while (i < len && getValue(list[i], sortKey) < value) {
+//         i++;
+//       }
+//       list.splice(i, 0, value);
+//       return list;
+// }
 const insert = (list, sortKey, item) => {
   const value = getValue(item, sortKey);
   const len = list.length;
-  const newList = [];
   let inserted = false;
   if (value >= getValue(list[len - 1], sortKey)) {
-    list[len] = value;
-    return list;
-  }
-  for (let i = 0; i < len; i++) {
-    const current = getValue(list[i], sortKey);
-    if (current > value && !inserted) {
-      newList.push(value);
-      inserted = true;
+    return [...list, value];
+  } else if (value <= getValue(list[0], sortKey)) {
+    return [value].concat(list);
+  } else {
+    const newList = [];
+    for (let i = 0; i < len; i++) {
+      const current = getValue(list[i], sortKey);
+      if (current > value && !inserted) {
+        newList.push(value);
+        inserted = true;
+      }
+      newList.push(current);
     }
-
-    newList.push(current);
+    return newList;
   }
-  return newList;
 };
 
 const remove = (list, sortKey, value) => {
@@ -59,7 +68,6 @@ const remove = (list, sortKey, value) => {
 
 export const List = ({ sortKey, initial, initialOrder }) => {
   const items = initialOrder ? initial : sort(initial, sortKey);
-  // console.log(`items`, items)
   return {
     items,
     findIndex: findIndex(items, sortKey),
@@ -78,4 +86,3 @@ export const List = ({ sortKey, initial, initialOrder }) => {
       }),
   };
 };
-console.log(List({ initial: [2, 1, -6, 4], initialOrder: false }).items);
