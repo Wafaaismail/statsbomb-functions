@@ -22,6 +22,17 @@
     "transform": {}
   },
   "dependencies": {
-    "ramda": "^0.27.1"
+    "@alvarocastro/quicksort": "^1.0.5",
+    "@charlesstover/quicksort": "^1.0.2",
+    "fast-sort": "^3.0.2",
+    "js-sorting-algo": "^1.0.1",
+    "optimized-quicksort": "^1.1.1",
+    "qsort.js": "^0.0.6",
+    "quick-srt": "^1.0.1",
+    "quicksort": "^1.1.1",
+    "ramda": "^0.27.1",
+    "sort-algorithms": "^1.1.0",
+    "sort-algorithms-js": "^3.10.1",
+    "timsort": "^0.3.0"
   }
 }
